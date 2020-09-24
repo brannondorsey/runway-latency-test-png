@@ -5,7 +5,8 @@ from runway.data_types import image
 @runway.command(name='latency_test', inputs={ 'image': image() }, outputs={ 'image': image() })
 def latency_test(model, args):
     # Test a crash loop
-    os.kill(os.getpid(), signal.SIGKILL)
+    print("Attempting to crash server")
+    os.kill(os.getpid(), signal.SIGINT)
     return { 'image': args['image'] }
 
 if __name__ == '__main__':
